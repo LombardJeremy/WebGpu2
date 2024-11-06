@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="debug|x64">
+      <Configuration>debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="release|x64">
+      <Configuration>release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{15E0B81C-AD7E-408A-B25B-0FA98810D941}</ProjectGuid>
+    <RootNamespace>WebGpu</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <OutDir>..\..\build\windows\x64\debug\</OutDir>
+    <IntDir>..\..\build\.objs\WebGpu\windows\x64\debug\</IntDir>
+    <TargetName>WebGpu</TargetName>
+    <TargetExt>.exe</TargetExt>
+    <LinkIncremental>true</LinkIncremental>
+    <ExternalIncludePath>C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw3webgpu\v1.2.0\829f954c964543d9ab102c5360ed29ae\include;C:\Users\jerem\AppData\Local\.xmake\packages\w\wgpu-native\v0.19.4+1\b179cf2a0b3d4699904289b2d3949c9c\include;C:\Users\jerem\AppData\Local\.xmake\packages\w\wgpu-native\v0.19.4+1\b179cf2a0b3d4699904289b2d3949c9c\include\webgpu;C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw\3.4\fc47358da159466996f7d289b4cf1b4e\include;;;</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <OutDir>..\..\build\windows\x64\release\</OutDir>
+    <IntDir>..\..\build\.objs\WebGpu\windows\x64\release\</IntDir>
+    <TargetName>WebGpu</TargetName>
+    <TargetExt>.exe</TargetExt>
+    <LinkIncremental>true</LinkIncremental>
+    <ExternalIncludePath>C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw3webgpu\v1.2.0\829f954c964543d9ab102c5360ed29ae\include;C:\Users\jerem\AppData\Local\.xmake\packages\w\wgpu-native\v0.19.4+1\b179cf2a0b3d4699904289b2d3949c9c\include;C:\Users\jerem\AppData\Local\.xmake\packages\w\wgpu-native\v0.19.4+1\b179cf2a0b3d4699904289b2d3949c9c\include\webgpu;C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw\3.4\fc47358da159466996f7d289b4cf1b4e\include;;;</ExternalIncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="Debugger">
+    <LocalDebuggerWorkingDirectory>..\..\build\windows\x64\debug</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerEnvironment>PATH=C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw3webgpu\v1.2.0\829f954c964543d9ab102c5360ed29ae\bin;C:\Users\jerem\AppData\Local\.xmake\packages\w\wgpu-native\v0.19.4+1\b179cf2a0b3d4699904289b2d3949c9c\bin;C:\Users\jerem\AppData\Local\.xmake\packages\c\cmake\3.30.2\2b80cef30074424181b5e19a46ef30fc\bin;C:\Users\jerem\AppData\Local\.xmake\packages\o\opengl\latest\b1caf5aecf3447d1bfaf66081135de32\bin;C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw\3.4\fc47358da159466996f7d289b4cf1b4e\bin;C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw\3.4\fc47358da159466996f7d289b4cf1b4e\lib;C:\Users\jerem\AppData\Local\.xmake\packages\w\wgpu-native\v0.19.4+1\b179cf2a0b3d4699904289b2d3949c9c\lib;C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw3webgpu\v1.2.0\829f954c964543d9ab102c5360ed29ae\lib;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools;C:\Program Files\Microsoft Visual Studio\2022\Community\Team Tools\DiagnosticsHub\Collector;C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64;C:\Program Files (x86)\Windows Kits\10\bin\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools;C:\VulkanSDK\1.3.290.0\Bin;c:\python311\scripts;c:\python311;c:\program files\oculus\support\oculus-runtime;c:\program files (x86)\common files\oracle\java\javapath;c:\program files (x86)\common files\intel\shared libraries\redist\intel64\compiler;c:\windows\system32;c:\windows;c:\windows\system32\wbem;c:\windows\system32\windowspowershell\v1.0;c:\windows\system32\openssh;c:\program files\common files\autodesk shared;c:\program files (x86)\autodesk\backburner;c:\program files\nvidia corporation\nvidia nvdlisr;c:\program files\dotnet;c:\program files\nodejs;c:\programdata\chocolatey\bin;c:\haxetoolkit\haxe;c:\haxetoolkit\neko;C:\Program Files\Git\cmd;C:\Program Files (x86)\GitExtensions;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit;C:\Users\jerem\AppData\Local\Programs\Python\Python39\Scripts;C:\Users\jerem\AppData\Local\Programs\Python\Python39;C:\Users\jerem\AppData\Local\Microsoft\WindowsApps;C:\Users\jerem\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\jerem\AppData\Roaming\npm;C:\Users\jerem\.dotnet\tools;C:\Users\jerem\AppData\Local\GitHubDesktop\bin;C:\Users\jerem\AppData\Local\gitkraken\bin;C:\Program Files\JetBrains\JetBrains Rider 2024.1.2\bin;C:\Users\jerem\xmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\vcpkg;$([System.Environment]::GetEnvironmentVariable('PATH'));%(LocalDebuggerEnvironment)</LocalDebuggerEnvironment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="Debugger">
+    <LocalDebuggerWorkingDirectory>..\..\build\windows\x64\release</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerEnvironment>PATH=C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw3webgpu\v1.2.0\829f954c964543d9ab102c5360ed29ae\bin;C:\Users\jerem\AppData\Local\.xmake\packages\w\wgpu-native\v0.19.4+1\b179cf2a0b3d4699904289b2d3949c9c\bin;C:\Users\jerem\AppData\Local\.xmake\packages\c\cmake\3.30.2\2b80cef30074424181b5e19a46ef30fc\bin;C:\Users\jerem\AppData\Local\.xmake\packages\o\opengl\latest\b1caf5aecf3447d1bfaf66081135de32\bin;C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw\3.4\fc47358da159466996f7d289b4cf1b4e\bin;C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw\3.4\fc47358da159466996f7d289b4cf1b4e\lib;C:\Users\jerem\AppData\Local\.xmake\packages\w\wgpu-native\v0.19.4+1\b179cf2a0b3d4699904289b2d3949c9c\lib;C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw3webgpu\v1.2.0\829f954c964543d9ab102c5360ed29ae\lib;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\bin\HostX64\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\VCPackages;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools;C:\Program Files\Microsoft Visual Studio\2022\Community\Team Tools\DiagnosticsHub\Collector;C:\Program Files (x86)\Windows Kits\10\bin\10.0.22621.0\x64;C:\Program Files (x86)\Windows Kits\10\bin\x64;C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools;C:\VulkanSDK\1.3.290.0\Bin;c:\python311\scripts;c:\python311;c:\program files\oculus\support\oculus-runtime;c:\program files (x86)\common files\oracle\java\javapath;c:\program files (x86)\common files\intel\shared libraries\redist\intel64\compiler;c:\windows\system32;c:\windows;c:\windows\system32\wbem;c:\windows\system32\windowspowershell\v1.0;c:\windows\system32\openssh;c:\program files\common files\autodesk shared;c:\program files (x86)\autodesk\backburner;c:\program files\nvidia corporation\nvidia nvdlisr;c:\program files\dotnet;c:\program files\nodejs;c:\programdata\chocolatey\bin;c:\haxetoolkit\haxe;c:\haxetoolkit\neko;C:\Program Files\Git\cmd;C:\Program Files (x86)\GitExtensions;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit;C:\Users\jerem\AppData\Local\Programs\Python\Python39\Scripts;C:\Users\jerem\AppData\Local\Programs\Python\Python39;C:\Users\jerem\AppData\Local\Microsoft\WindowsApps;C:\Users\jerem\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\jerem\AppData\Roaming\npm;C:\Users\jerem\.dotnet\tools;C:\Users\jerem\AppData\Local\GitHubDesktop\bin;C:\Users\jerem\AppData\Local\gitkraken\bin;C:\Program Files\JetBrains\JetBrains Rider 2024.1.2\bin;C:\Users\jerem\xmake;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja;C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\vcpkg;$([System.Environment]::GetEnvironmentVariable('PATH'));%(LocalDebuggerEnvironment)</LocalDebuggerEnvironment>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
+    <Link>
+      <AdditionalLibraryDirectories>C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw3webgpu\v1.2.0\829f954c964543d9ab102c5360ed29ae\lib;C:\Users\jerem\AppData\Local\.xmake\packages\w\wgpu-native\v0.19.4+1\b179cf2a0b3d4699904289b2d3949c9c\lib;C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw\3.4\fc47358da159466996f7d289b4cf1b4e\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3webgpu.lib;wgpu_native.lib;glfw3.lib;opengl32.lib;Advapi32.lib;bcrypt.lib;d3dcompiler.lib;NtDll.lib;User32.lib;Userenv.lib;WS2_32.lib;Gdi32.lib;Opengl32.lib;user32.lib;shell32.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>-dynamicbase -nxcompat %(AdditionalOptions)</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <ExternalTemplatesDiagnostics>false</ExternalTemplatesDiagnostics>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;__config_debug__;__config_x64__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <AdditionalOptions>-FS %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;__config_debug__;__config_x64__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
+    <Link>
+      <AdditionalLibraryDirectories>C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw3webgpu\v1.2.0\829f954c964543d9ab102c5360ed29ae\lib;C:\Users\jerem\AppData\Local\.xmake\packages\w\wgpu-native\v0.19.4+1\b179cf2a0b3d4699904289b2d3949c9c\lib;C:\Users\jerem\AppData\Local\.xmake\packages\g\glfw\3.4\fc47358da159466996f7d289b4cf1b4e\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3webgpu.lib;wgpu_native.lib;glfw3.lib;opengl32.lib;Advapi32.lib;bcrypt.lib;d3dcompiler.lib;NtDll.lib;User32.lib;Userenv.lib;WS2_32.lib;Gdi32.lib;Opengl32.lib;user32.lib;shell32.lib;gdi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>-dynamicbase -nxcompat /opt:ref /opt:icf %(AdditionalOptions)</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <ExternalTemplatesDiagnostics>false</ExternalTemplatesDiagnostics>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;NDEBUG;__config_release__;__config_x64__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;NDEBUG;__config_release__;__config_x64__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Header\Application.h" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
