@@ -348,7 +348,7 @@ bool Application::Initialize()
     config.width = 640;
     config.height = 480;
     config.usage = WGPUTextureUsage_RenderAttachment;
-    WGPUTextureFormat surfaceFormat = wgpuSurfaceGetPreferredFormat(surface, adapter);
+    surfaceFormat = wgpuSurfaceGetPreferredFormat(surface, adapter);
     config.format = surfaceFormat;
     // And we do not need any particular view format:
     config.viewFormatCount = 0;
