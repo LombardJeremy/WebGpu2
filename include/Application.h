@@ -53,5 +53,12 @@ public:
 
     WGPUCommandBufferDescriptor cmdBufferDescriptor;
     WGPUCommandBuffer command;
+
+    // In Application class
+private:
+    WGPURenderPipeline pipeline;
+    WGPUTextureFormat surfaceFormat = WGPUTextureFormat_Undefined;
+
+    void InitializePipeline();
 };
 
