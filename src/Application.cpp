@@ -1,11 +1,15 @@
 #include "../include/Application.h"
-#include <iostream>
-#include <GLFW/glfw3.h>
+
 #include <webgpu/webgpu.h>
+#define WEBGPU_CPP_IMPLEMENTATION
 #ifdef WEBGPU_BACKEND_WGPU
 #  include <webgpu/wgpu.h>
 #endif // WEBGPU_BACKEND_WGPU
+
+#include <GLFW/glfw3.h>
 #include <glfw3webgpu.h>
+
+#include <iostream>
 #include <cassert>
 #include <vector>
 
@@ -139,11 +143,9 @@ bool Application::Initialize()
 	surface = glfwGetWGPUSurface(instance, window); //Get Surface
 	WGPURequestAdapterOptions adapterOpts = {};
 	adapterOpts.nextInChain = nullptr;
-	adapterOpts.compatibleSurface = surface;
-	                             
+	adapterOpts.compatibleSurface = surface;                        
 	adapter = requestAdapterSync(instance, &adapterOpts);
 	std::cout << "Got adapter: " << adapter << std::endl;
-
 	// We no longer need to access the instance
 	wgpuInstanceRelease(instance);
 
@@ -157,6 +159,7 @@ bool Application::Initialize()
     deviceDesc.requiredLimits = nullptr; // we do not require any specific limit
     deviceDesc.defaultQueue.nextInChain = nullptr;
     deviceDesc.defaultQueue.label = "The default queue";
+
     // A function that is invoked whenever the device stops being available.
     deviceDesc.deviceLostCallback = [](WGPUDeviceLostReason reason, char const* message, void* /* pUserData */) {
         std::cout << "Device lost: reason " << reason;
@@ -173,6 +176,7 @@ bool Application::Initialize()
         std::cout << std::endl;
         };
     wgpuDeviceSetUncapturedErrorCallback(device, onDeviceError, nullptr /* pUserData */);
+
 
     //queue test
     queue = wgpuDeviceGetQueue(device);
@@ -198,7 +202,6 @@ bool Application::Initialize()
 
     // Finally submit the command queue
     std::cout << "Submitting command..." << std::endl;
-    wgpuCommandBufferRelease(command);
     std::cout << "Command submitted." << std::endl;
 
     for (int i = 0; i < 5; ++i) {
@@ -233,6 +236,7 @@ bool Application::Initialize()
     wgpuSurfaceConfigure(surface, &config);
     #pragma endregion
 
+    //Adaptater release
     wgpuAdapterRelease(adapter);
 
 	return true;
@@ -240,6 +244,7 @@ bool Application::Initialize()
 
 void Application::Terminate()
 {
+    wgpuSurfaceUnconfigure(surface);
     wgpuQueueRelease(queue);
     wgpuSurfaceRelease(surface);
     wgpuDeviceRelease(device);
@@ -292,7 +297,7 @@ void Application::MainLoop()
     command = wgpuCommandEncoderFinish(encoder, &cmdBufferDescriptor);
 
     wgpuQueueSubmit(queue, 1, &command);
-
+    wgpuCommandBufferRelease(command);
 
     wgpuSurfacePresent(surface);
 
