@@ -54,6 +54,11 @@ public:
     WGPUCommandBufferDescriptor cmdBufferDescriptor;
     WGPUCommandBuffer command;
 
+
+    //TEST
+    WGPUBuffer buffer1;
+    WGPUBuffer buffer2;
+
     // In Application class
 private:
     WGPURenderPipeline pipeline;

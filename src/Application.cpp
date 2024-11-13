@@ -35,13 +35,6 @@ fn fs_main() -> @location(0) vec4f {
 )";
 
 
-
-/**
- * Utility function to get a WebGPU adapter, so that
- *     WGPUAdapter adapter = requestAdapterSync(options);
- * is roughly equivalent to
- *     const adapter = await navigator.gpu.requestAdapter(options);
- */
 WGPUAdapter Application::requestAdapterSync(WGPUInstance instance, WGPURequestAdapterOptions const* options) {
     // A simple structure holding the local information shared with the
     // onAdapterRequestEnded callback.
@@ -82,13 +75,6 @@ WGPUAdapter Application::requestAdapterSync(WGPUInstance instance, WGPURequestAd
 
     return userData.adapter;
 }
-/**
- * Utility function to get a WebGPU device, so that
- *     WGPUAdapter device = requestDeviceSync(adapter, options);
- * is roughly equivalent to
- *     const device = await adapter.requestDevice(descriptor);
- * It is very similar to requestAdapter
- */
 WGPUDevice Application::requestDeviceSync(WGPUAdapter adapter, WGPUDeviceDescriptor const* descriptor) {
     struct UserData {
         WGPUDevice device = nullptr;
@@ -243,16 +229,16 @@ void Application::InitializePipeline() {
     // 
     pipelineDesc.layout = nullptr;
 
-
     //Create Pipeline
     pipeline = wgpuDeviceCreateRenderPipeline(device, &pipelineDesc);
     // We no longer need to access the shader module
     wgpuShaderModuleRelease(shaderModule);
+
+
 }
 
 bool Application::Initialize()
 {
-
 	// Open window
 	glfwInit();
 	glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API); // <-- extra info for glfwCreateWindow
@@ -301,7 +287,6 @@ bool Application::Initialize()
         };
     wgpuDeviceSetUncapturedErrorCallback(device, onDeviceError, nullptr /* pUserData */);
 
-
     //queue test
     queue = wgpuDeviceGetQueue(device);
 
@@ -310,18 +295,19 @@ bool Application::Initialize()
         };
     wgpuQueueOnSubmittedWorkDone(queue, onQueueWorkDone, nullptr /* pUserData */);
 
-    WGPUCommandEncoderDescriptor encoderDesc = {};
+    encoderDesc = {};
     encoderDesc.nextInChain = nullptr;
     encoderDesc.label = "My command encoder";
-    WGPUCommandEncoder encoder = wgpuDeviceCreateCommandEncoder(device, &encoderDesc);
+    encoder = wgpuDeviceCreateCommandEncoder(device, &encoderDesc);
 
     wgpuCommandEncoderInsertDebugMarker(encoder, "Do one thing");
     wgpuCommandEncoderInsertDebugMarker(encoder, "Do another thing");
 
-    WGPUCommandBufferDescriptor cmdBufferDescriptor = {};
+    cmdBufferDescriptor = {};
     cmdBufferDescriptor.nextInChain = nullptr;
     cmdBufferDescriptor.label = "Command buffer";
-    WGPUCommandBuffer command = wgpuCommandEncoderFinish(encoder, &cmdBufferDescriptor);
+    command = wgpuCommandEncoderFinish(encoder, &cmdBufferDescriptor);
+
     wgpuCommandEncoderRelease(encoder); // release encoder after it's finished
 
     // Finally submit the command queue
@@ -364,6 +350,39 @@ bool Application::Initialize()
     wgpuAdapterRelease(adapter);
 
     InitializePipeline();
+
+    //Test Buffer
+    WGPUBufferDescriptor bufferDesc = {};
+    bufferDesc.nextInChain = nullptr;
+    bufferDesc.label = "Some GPU-side data buffer";
+    bufferDesc.usage = WGPUBufferUsage_CopyDst | WGPUBufferUsage_CopySrc;
+    bufferDesc.size = 16;
+    bufferDesc.mappedAtCreation = false;
+    buffer1 = wgpuDeviceCreateBuffer(device, &bufferDesc);
+
+    bufferDesc.label = "Output buffer";
+    buffer2 = wgpuDeviceCreateBuffer(device, &bufferDesc);
+
+    // Create some CPU-side data buffer (of size 16 bytes)
+    std::vector<uint8_t> numbers(16);
+    for (uint8_t i = 0; i < 16; ++i) numbers[i] = i;
+    // `numbers` now contains [ 0, 1, 2, ... ]
+
+    // Copy this from `numbers` (RAM) to `buffer1` (VRAM)
+    wgpuQueueWriteBuffer(queue, buffer1, 0, numbers.data(), numbers.size());
+
+    wgpuBufferRelease(buffer1);
+    wgpuBufferRelease(buffer2);
+
+    WGPUCommandEncoder encoder2 = wgpuDeviceCreateCommandEncoder(device, nullptr);
+
+    // After creating the command encoder
+    wgpuCommandEncoderCopyBufferToBuffer(encoder2, buffer1, 0, buffer2, 0, 16);
+
+    WGPUCommandBuffer command2 = wgpuCommandEncoderFinish(encoder2, nullptr);
+    wgpuCommandEncoderRelease(encoder2);
+    wgpuQueueSubmit(queue, 1, &command2);
+    wgpuCommandBufferRelease(command2);
 
 	return true;
 }
